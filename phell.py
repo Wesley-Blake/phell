@@ -2,7 +2,7 @@
 
 # Read - Eval - Print - Loop
 
-import sys
+from phellFunctions import *
 
 # NOTE get environment variables list
 # NOTE import built-ins and get list
