@@ -1,21 +1,39 @@
 # /usr/bin/env python
 
-# Read - Eval - Print - Loop
-
-from phellFunctions import *
+import subprocess
+import phellFunctions
 
 # NOTE get environment variables list
-# NOTE import built-ins and get list
-
-def path_search_and_exec(command):
-    pass
+builtIns = []
+for functions in dir(phellFunctions):
+    if "__" not in functions:
+        builtIns.append(functions)
 
 
 while True:
     command = input("$ ").split()
+    if not command: continue
     # NOTE Default to os applications
 
     if command[0] in builtIns:
-        pass
+        match command[0]:
+            # Navigation
+            case "cd":
+                pass
+            case "ls":
+                pass
+            case "pwd":
+                pass
+
+            # Files
+            case "cat":
+                pass
+
+            # Interaction
+            case "echo":
+                pass
+            case "type":
+                pass
+    elif command[0] == "exit": exit()
     else:
-        sys.stdout.write(path_search_and_exec(command))
+        subprocess.run(command)

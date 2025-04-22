@@ -1,5 +1,5 @@
 # Built-ins for phell
-import os, subprocess, sys
+import os, sys
 from pathlib import Path
 
 
@@ -8,7 +8,7 @@ def cd(command: list) -> None:
     try:
         os.chdir(command)
     except:
-        sys.stdout.write(f"{command[0] failed to cd")
+        sys.stdout.write(f"{command[0]} failed to cd")
 
 def ls(command: list) -> list:
     return os.listdir(command)
