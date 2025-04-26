@@ -1,7 +1,6 @@
 # /usr/bin/env python
 
-import subprocess
-import phellFunctions
+import sys, subprocess, phellFunctions
 
 # NOTE get environment variables list
 builtIns = []
@@ -19,21 +18,25 @@ while True:
         match command[0]:
             # Navigation
             case "cd":
-                pass
+                phellFunctions.cd(command)
             case "ls":
-                pass
+                phellFunctions.ls(command)
             case "pwd":
+                phellFunctions.pwd()
+
+            # Interaction
+            case "echo":
+                phellFunctions.echo(command)
+            case "type":
                 pass
 
             # Files
             case "cat":
                 pass
 
-            # Interaction
-            case "echo":
-                pass
-            case "type":
-                pass
     elif command[0] == "exit": exit()
     else:
-        subprocess.run(command)
+        try:
+            subprocess.run(command)
+        except Exception as e:
+            sys.stdout.write(f"{command[0]} isn't in PATH")
